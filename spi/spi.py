@@ -1,5 +1,8 @@
 # Interact with a w25p08 flash in python.
 # Using raw SPI commands.
+# From ZB25VQ80ATIG's datasheet:
+#  Data on the DI input is sampled on the rising edge of clock with
+#  most significant bit (MSB) first.
 #
 import spidev
 from time import sleep

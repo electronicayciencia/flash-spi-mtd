@@ -1,7 +1,0 @@
-Proof of Concept about embeded devices security.
-
-MTD has three partitions:
-- setup: jffs2 image with these files.
-- key: blob with the filesystem key.
-- data: encrypted jffs2.
-

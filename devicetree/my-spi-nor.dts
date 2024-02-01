@@ -88,17 +88,17 @@
 				#address-cells = <1>;
 				#size-cells = <1>;
 
-				partition@50000 {
-				    label = "data";
-				    reg = <0x60000 0xA0000>;
+				raw {
+				    label = "raw";
+				    reg = <0xE0000 0x10000>;
 				};
-				partition@10000 {
-				    label = "key";
-				    reg = <0x50000 0x10000>;
+				user {
+				    label = "user";
+				    reg = <0x40000 0xA0000>;
 				};
-        partition@0 {
-			    label = "setup";
-				    reg = <0x00000 0x50000>;
+				conf {
+				    label = "conf";
+				    reg = <0x00000 0x40000>;
 				};
 
 	    };
