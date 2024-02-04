@@ -38,7 +38,7 @@ Prepare for overlay
 
     mkdir -p /tmp/userconfig/config /tmp/userconfig/work
 
-Create overlay to marge both config systems
+Create overlay to merge both config systems
 
     mount -t overlay -o lowerdir=/opt/conf,upperdir=/tmp/userconfig/config,workdir=/tmp/userconfig/work mergedcfg /opt/conf
 

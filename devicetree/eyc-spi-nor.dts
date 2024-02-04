@@ -1,0 +1,59 @@
+/dts-v1/;
+
+/ {
+    compatible = "brcm,bcm2835";
+
+    fragment@0 {
+        target = < 0xffffffff >;
+
+        __overlay__ {
+            status = "disabled";
+        };
+    };
+
+    fragment@1 {
+        target = < 0xffffffff >;
+
+        __overlay__ {
+            status = "okay";
+            #address-cells = < 0x01 >;
+            #size-cells = < 0x00 >;
+
+            spi_nor@0 {
+                compatible = "generic,m25p80-nonjedec", "jedec,spi-nor";
+                reg = < 0x00 >;
+                spi-max-frequency = < 4000000 >;
+
+                partitions {
+                    compatible = "fixed-partitions";
+                    #address-cells = <1>;
+                    #size-cells = <1>;
+
+                    partition@e0000 {
+                        label = "raw";
+                        reg = <0xE0000 0x10000>;
+                    };
+                    partition@40000 {
+                        label = "user";
+                        reg = <0x40000 0xA0000>;
+                    };
+                    partition@0 {
+                        label = "conf";
+                        reg = <0x00000 0x40000>;
+                    };
+                };
+            };
+        };
+    };
+
+    __fixups__ {
+        spidev0 = "/fragment@0:target:0";
+        spi0 = "/fragment@1:target:0";
+    };
+
+    __symbols__ {
+        spi_nor_00 = "/fragment@1/__overlay__/spi_nor@0";
+    };
+
+};
+
