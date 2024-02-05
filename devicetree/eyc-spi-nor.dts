@@ -1,10 +1,11 @@
 /dts-v1/;
+/plugin/;	/* allow undefined references */
 
 / {
     compatible = "brcm,bcm2835";
 
     fragment@0 {
-        target = < 0xffffffff >;
+        target = <&spidev0>;
 
         __overlay__ {
             status = "disabled";
@@ -12,7 +13,7 @@
     };
 
     fragment@1 {
-        target = < 0xffffffff >;
+        target = <&spi0>;
 
         __overlay__ {
             status = "okay";
@@ -44,15 +45,6 @@
                 };
             };
         };
-    };
-
-    __fixups__ {
-        spidev0 = "/fragment@0:target:0";
-        spi0 = "/fragment@1:target:0";
-    };
-
-    __symbols__ {
-        spi_nor_00 = "/fragment@1/__overlay__/spi_nor@0";
     };
 
 };
