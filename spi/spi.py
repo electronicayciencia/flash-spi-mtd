@@ -5,19 +5,15 @@
 #  most significant bit (MSB) first.
 #
 import spidev
-from time import sleep
 from binascii import hexlify
 
-bus = 0     #spi0
-device = 0  #.0  (chip select pin)
-
-# Enable SPI
+# Open SPI
 spi = spidev.SpiDev()
-spi.open(bus, device)
+spi.open(bus = 0, device = 0)
 
 # Set SPI speed and mode
-spi.max_speed_hz = 500000
-spi.mode = 0
+#spi.max_speed_hz = 500000
+#spi.mode = 0
 
 CMD_PAGE_WRITE    = 0x02
 CMD_PAGE_READ     = 0x03
