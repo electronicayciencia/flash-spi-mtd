@@ -21,7 +21,7 @@
             #size-cells = < 0x00 >;
 
             spi_nor@0 {
-                compatible = "generic,m25p80-nonjedec", "jedec,spi-nor";
+                compatible = "generic,m25p80-nonjedec";
                 reg = < 0x00 >;
                 spi-max-frequency = < 4000000 >;
 
@@ -30,17 +30,13 @@
                     #address-cells = <1>;
                     #size-cells = <1>;
 
-                    partition@e0000 {
-                        label = "raw";
-                        reg = <0xE0000 0x10000>;
-                    };
-                    partition@40000 {
+                    partition@80000 {
                         label = "user";
-                        reg = <0x40000 0xA0000>;
+                        reg = <0x80000 0x80000>;
                     };
                     partition@0 {
                         label = "conf";
-                        reg = <0x00000 0x40000>;
+                        reg = <0x00000 0x80000>;
                     };
                 };
             };
