@@ -6,7 +6,7 @@ spi = spidev.SpiDev()
 spi.open(bus = 0, device = 0)
 
 # Set SPI speed and mode
-spi.max_speed_hz = 500000
+spi.max_speed_hz = 400000
 spi.mode = 0
 
 # Transfer data

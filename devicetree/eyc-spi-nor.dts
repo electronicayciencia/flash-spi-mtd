@@ -8,7 +8,7 @@
         target = <&spidev0>;
 
         __overlay__ {
-            status = "disabled";
+            status = "okay";
         };
     };
 
@@ -21,24 +21,24 @@
             #size-cells = < 0x00 >;
 
             spi_nor@0 {
-                compatible = "generic,m25p80-nonjedec";
+                compatible = "jedec,spi-nor";
                 reg = < 0x00 >;
-                spi-max-frequency = < 4000000 >;
+                spi-max-frequency = < 15000000 >;
 
-                partitions {
-                    compatible = "fixed-partitions";
-                    #address-cells = <1>;
-                    #size-cells = <1>;
+                //partitions {
+                //    compatible = "fixed-partitions";
+                //    #address-cells = <1>;
+                //    #size-cells = <1>;
 
-                    partition@80000 {
-                        label = "user";
-                        reg = <0x80000 0x80000>;
-                    };
-                    partition@0 {
-                        label = "conf";
-                        reg = <0x00000 0x80000>;
-                    };
-                };
+                //    partition@80000 {
+                //        label = "user";
+                //        reg = <0x400000 0x400000>;
+                //    };
+                //    partition@0 {
+                //        label = "conf";
+                //        reg = <0x000000 0x400000>;
+                //    };
+                //};
             };
         };
     };
